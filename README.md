@@ -3,7 +3,7 @@
 Kove is a native Windows terminal for running many AI coding agents side by side
 (Claude Code, Codex, OpenCode, Gemini CLI and more).
 
-**[Download Kove for Windows](../../releases/latest)**: unzip, double-click *Install Kove.cmd*.
+**[Download Kove for Windows](../../releases/latest/download/Kove-Setup.exe)**: run the setup, no admin needed. ([All downloads](../../releases/latest))
 
 This repo is where you report bugs and suggest features. The code lives elsewhere.
 
