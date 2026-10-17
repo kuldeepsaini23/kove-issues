@@ -1,0 +1,40 @@
+name: Bug report
+description: Something in Kove doesn't work as it should
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected, and what you saw instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open a Claude tab
+        2. ...
+  - type: input
+    id: version
+    attributes:
+      label: Kove version
+      description: Bottom left of Settings (e.g. 0.1.0)
+    validations:
+      required: true
+  - type: input
+    id: windows
+    attributes:
+      label: Windows version
+      placeholder: Windows 11 24H2
+  - type: dropdown
+    id: area
+    attributes:
+      label: Where
+      options: [Terminal / shell, Agent tabs (Claude, Codex, OpenCode...), Sidebar, Input box, Split panes, Changes / diff, Browser pane, Settings, Mission control, Other]
+  - type: textarea
+    id: extra
+    attributes:
+      label: Screenshots or logs
+      description: Drag images in. Remove any keys, tokens or private code first.
