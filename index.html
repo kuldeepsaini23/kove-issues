@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content" />
+    <meta name="theme-color" content="#0e0f11" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="referrer" content="no-referrer" />
+    <!-- The same policy the relay sends as a header, for hosts that can't send headers (GitHub Pages). -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'self' ws: wss:; style-src 'self' 'unsafe-inline'; img-src 'self' data:; worker-src 'self'" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Kove" />
+    <title>Kove Remote</title>
+    <link rel="manifest" href="./manifest-hjqjd21b.webmanifest" />
+    <link rel="icon" href="./icon-8h99mkcx.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./icon-8h99mkcx.svg" />
+    
+  <link rel="stylesheet" crossorigin href="./chunk-e7efrkjg.css"><script type="module" crossorigin src="./chunk-2pr1nanz.js"></script></head>
+  <body>
+    <main id="app">
+      <section id="home" class="view">
+        <header class="bar">
+          <div class="brand"><span class="mark">&gt;_</span> Kove</div>
+          <div id="status" class="pill" data-state="connecting">connecting</div>
+        </header>
+        <div id="notice" class="notice" hidden></div>
+        <div id="tabs" class="list"></div>
+        <div id="empty" class="empty" hidden>
+          <h2>Pair this phone</h2>
+          <p>On your PC, open Kove &rarr; Settings &rarr; <b>Remote</b>, turn it on and click <b>Show QR code</b>. Scan it with this phone's camera, then click <b>Allow</b> on the PC.</p>
+          <p class="fine">Everything between this phone and your PC is end-to-end encrypted. The relay only passes sealed messages along.</p>
+        </div>
+        <footer class="foot">
+          <span id="host-name"></span>
+          <button id="forget" class="link" hidden>Forget this PC</button>
+        </footer>
+      </section>
+
+      <section id="term" class="view" hidden>
+        <header class="bar">
+          <button id="back" class="icon" aria-label="Back to tabs">&#8249;</button>
+          <div class="title"><span id="term-dot" class="dot"></span><span id="term-title"></span></div>
+          <button id="fit" class="chip" aria-pressed="false" title="Size the tab for this phone">Fit</button>
+        </header>
+        <div id="screen" class="screen"></div>
+        <nav id="keys" class="keys" aria-label="Extra keys">
+          <button data-key="esc">Esc</button>
+          <button data-key="tab">Tab</button>
+          <button data-key="ctrl" class="mod">Ctrl</button>
+          <button data-key="up">&uarr;</button>
+          <button data-key="down">&darr;</button>
+          <button data-key="left">&larr;</button>
+          <button data-key="right">&rarr;</button>
+          <button data-key="ctrl-c">^C</button>
+          <button data-key="slash">/</button>
+          <button data-key="paste">Paste</button>
+          <button data-key="enter" class="enter">&#9166;</button>
+        </nav>
+      </section>
+    </main>
+    
+  </body>
+</html>
