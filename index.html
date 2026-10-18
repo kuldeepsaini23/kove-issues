@@ -17,13 +17,16 @@
     <link rel="icon" href="./icon-8h99mkcx.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="./icon-8h99mkcx.svg" />
     
-  <link rel="stylesheet" crossorigin href="./chunk-e7efrkjg.css"><script type="module" crossorigin src="./chunk-2pr1nanz.js"></script></head>
+  <link rel="stylesheet" crossorigin href="./chunk-8nj00wjy.css"><script type="module" crossorigin src="./chunk-ff5gn7s4.js"></script></head>
   <body>
     <main id="app">
       <section id="home" class="view">
         <header class="bar">
           <div class="brand"><span class="mark">&gt;_</span> Kove</div>
-          <div id="status" class="pill" data-state="connecting">connecting</div>
+          <div class="bar-end">
+            <button id="alerts" class="chip" hidden aria-pressed="false" title="Notifications from your PC's agents">Alerts</button>
+            <div id="status" class="pill" data-state="connecting">connecting</div>
+          </div>
         </header>
         <div id="notice" class="notice" hidden></div>
         <div id="tabs" class="list"></div>
@@ -45,6 +48,7 @@
           <button id="fit" class="chip" aria-pressed="false" title="Size the tab for this phone">Fit</button>
         </header>
         <div id="screen" class="screen"></div>
+        <div id="ask-bar" class="ask-bar" hidden></div>
         <nav id="keys" class="keys" aria-label="Extra keys">
           <button data-key="esc">Esc</button>
           <button data-key="tab">Tab</button>

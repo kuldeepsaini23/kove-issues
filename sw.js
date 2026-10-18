@@ -1,6 +1,6 @@
 // Kove Remote service worker: makes the app installable and opens the shell
 // offline. Only same-origin GETs are cached; WebSocket traffic never passes here.
-const CACHE = "kove-remote-v2";
+const CACHE = "kove-remote-v3";
 // The app may live in a folder (GitHub Pages: /kove-issues/): paths are relative to it.
 const ROOT = new URL("./", self.registration.scope).pathname;
 
@@ -28,5 +28,38 @@ self.addEventListener("fetch", (e) => {
         return res;
       })
       .catch(() => caches.match(e.request.mode === "navigate" ? ROOT : e.request).then((r) => r || Response.error())),
+  );
+});
+
+// A push from your PC (encrypted end to end; the browser decrypted it): show it.
+self.addEventListener("push", (e) => {
+  let m = {};
+  try {
+    m = e.data ? e.data.json() : {};
+  } catch {
+    m = { title: "Kove", body: e.data ? e.data.text() : "" };
+  }
+  e.waitUntil(
+    self.registration.showNotification(m.title || "Kove", {
+      body: m.body || "",
+      tag: m.tab || "kove",
+      renotify: true,
+      icon: ROOT + "icon.svg",
+      data: { tab: m.tab || "" },
+    }),
+  );
+});
+
+// A tap opens Kove at that tab (an open window is reused).
+self.addEventListener("notificationclick", (e) => {
+  e.notification.close();
+  const url = ROOT + (e.notification.data && e.notification.data.tab ? "?tab=" + encodeURIComponent(e.notification.data.tab) : "");
+  e.waitUntil(
+    self.clients.matchAll({ type: "window", includeUncontrolled: true }).then((list) => {
+      for (const c of list) {
+        if ("navigate" in c) return c.navigate(url).then((w) => (w || c).focus());
+      }
+      return self.clients.openWindow(url);
+    }),
   );
 });
