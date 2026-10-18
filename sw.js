@@ -1,6 +1,6 @@
 // Kove Remote service worker: makes the app installable and opens the shell
 // offline. Only same-origin GETs are cached; WebSocket traffic never passes here.
-const CACHE = "kove-remote-v3";
+const CACHE = "kove-remote-v4";
 // The app may live in a folder (GitHub Pages: /kove-issues/): paths are relative to it.
 const ROOT = new URL("./", self.registration.scope).pathname;
 
