@@ -17,7 +17,7 @@
     <link rel="icon" href="./icon-8h99mkcx.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="./icon-8h99mkcx.svg" />
     
-  <link rel="stylesheet" crossorigin href="./chunk-bgkcze29.css"><script type="module" crossorigin src="./chunk-cdada3qf.js"></script></head>
+  <link rel="stylesheet" crossorigin href="./chunk-03tqkbwm.css"><script type="module" crossorigin src="./chunk-4e9ndv9a.js"></script></head>
   <body>
     <main id="app">
       <section id="home" class="view">
@@ -45,10 +45,19 @@
         <header class="bar">
           <button id="back" class="icon" aria-label="Back to tabs">&#8249;</button>
           <div class="title"><span id="term-dot" class="dot"></span><span id="term-title"></span></div>
+          <button id="review-btn" class="chip" hidden title="What changed">Review</button>
           <button id="fit" class="chip" aria-pressed="false" title="Size the tab for this phone">Fit</button>
         </header>
+        <div class="zoom" role="group" aria-label="Text size">
+          <button id="smaller" aria-label="Smaller text">A&minus;</button>
+          <button id="bigger" aria-label="Bigger text">A+</button>
+        </div>
         <div id="screen" class="screen"></div>
         <div id="ask-bar" class="ask-bar" hidden></div>
+        <form id="reply" class="reply">
+          <textarea id="reply-text" rows="1" placeholder="Message&hellip;" enterkeyhint="send" autocomplete="off" autocapitalize="sentences"></textarea>
+          <button id="reply-send" type="submit" aria-label="Send">&#8593;</button>
+        </form>
         <nav id="keys" class="keys" aria-label="Extra keys">
           <button data-key="esc">Esc</button>
           <button data-key="tab">Tab</button>
@@ -62,6 +71,16 @@
           <button data-key="paste">Paste</button>
           <button data-key="enter" class="enter">&#9166;</button>
         </nav>
+      </section>
+
+      <section id="review" class="view" hidden>
+        <header class="bar">
+          <button id="review-back" class="icon" aria-label="Back to the tab">&#8249;</button>
+          <div class="title"><span id="review-title">Changes</span></div>
+          <button id="commit" class="chip" hidden title="Ask the agent to commit">Ask to commit</button>
+        </header>
+        <div id="review-sum" class="review-sum"></div>
+        <div id="diff" class="diff"></div>
       </section>
     </main>
     
