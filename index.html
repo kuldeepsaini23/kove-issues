@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content" />
-    <meta name="theme-color" content="#0e0f11" />
+    <meta name="theme-color" content="#000000" />
     <meta name="color-scheme" content="dark" />
     <meta name="referrer" content="no-referrer" />
     <!-- The same policy the relay sends as a header, for hosts that can't send headers (GitHub Pages). -->
@@ -17,46 +17,73 @@
     <link rel="icon" href="./icon-8h99mkcx.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="./icon-8h99mkcx.svg" />
     
-  <link rel="stylesheet" crossorigin href="./chunk-03tqkbwm.css"><script type="module" crossorigin src="./chunk-4e9ndv9a.js"></script></head>
+  <link rel="stylesheet" crossorigin href="./chunk-51xjsve0.css"><script type="module" crossorigin src="./chunk-eygc5812.js"></script></head>
   <body>
     <main id="app">
       <section id="home" class="view">
-        <header class="bar">
-          <div class="brand"><span class="mark">&gt;_</span> Kove</div>
-          <div class="bar-end">
-            <button id="alerts" class="chip" hidden aria-pressed="false" title="Notifications from your PC's agents">Alerts</button>
-            <div id="status" class="pill" data-state="connecting">connecting</div>
+        <header class="top">
+          <div class="top-row">
+            <div class="brand"><img class="brand-icon" src="./icon-8h99mkcx.svg" alt="" /> Kove</div>
+            <div class="top-actions">
+              <button id="alerts" class="round" hidden aria-pressed="false" aria-label="Alerts" title="Notifications from your PC's agents">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.27 21a2 2 0 0 0 3.46 0M3.26 15.33A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.67C19.41 13.96 18 12.5 18 8A6 6 0 0 0 6 8c0 4.5-1.41 5.96-2.74 7.33" /></svg>
+              </button>
+              <div id="status" class="status" data-state="connecting">connecting</div>
+            </div>
           </div>
+          <div id="home-head" class="home-head" hidden>
+            <h1>Tasks</h1>
+            <div class="host-line"><span id="host-name"></span><span id="counts"></span></div>
+          </div>
+          <nav id="chips" class="chips" aria-label="Show" hidden></nav>
         </header>
         <div id="notice" class="notice" hidden></div>
+        <div id="pairing" class="pairing" hidden></div>
         <div id="tabs" class="list"></div>
-        <div id="empty" class="empty" hidden>
-          <h2>Pair this phone</h2>
-          <p>On your PC, open Kove &rarr; Settings &rarr; <b>Remote</b>, turn it on and click <b>Show QR code</b>. Scan it with this phone's camera, then click <b>Allow</b> on the PC.</p>
-          <p class="fine">Everything between this phone and your PC is end-to-end encrypted. The relay only passes sealed messages along.</p>
+        <div id="empty" class="onboard" hidden>
+          <img class="onboard-icon" src="./icon-8h99mkcx.svg" alt="" />
+          <h1>Your agents, in your pocket</h1>
+          <p class="muted">Watch every Kove tab, answer Claude and Codex, and approve what they run, from this phone.</p>
+          <ol class="steps">
+            <li><span class="step-n">1</span><span>On your PC, open Kove &rarr; Settings &rarr; <b>Remote</b> and turn it on.</span></li>
+            <li><span class="step-n">2</span><span>Click <b>Show QR code</b> and scan it with this phone's camera.</span></li>
+            <li><span class="step-n">3</span><span>Check the code matches, then click <b>Allow</b> on the PC.</span></li>
+          </ol>
+          <p class="lock">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
+            End-to-end encrypted. The relay only passes sealed messages along.
+          </p>
         </div>
         <footer class="foot">
-          <span id="host-name"></span>
           <button id="forget" class="link" hidden>Forget this PC</button>
         </footer>
       </section>
 
       <section id="term" class="view" hidden>
-        <header class="bar">
-          <button id="back" class="icon" aria-label="Back to tabs">&#8249;</button>
-          <div class="title"><span id="term-dot" class="dot"></span><span id="term-title"></span></div>
-          <button id="review-btn" class="chip" hidden title="What changed">Review</button>
-          <button id="fit" class="chip" aria-pressed="false" title="Size the tab for this phone">Fit</button>
+        <header class="tbar">
+          <button id="back" class="round" aria-label="Back to tasks">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
+          </button>
+          <div class="tbar-title">
+            <div class="t1"><span id="term-dot" class="dot"></span><span id="term-title"></span></div>
+            <div id="term-sub" class="t2"></div>
+          </div>
+          <button id="review-btn" class="pill" hidden title="What changed">Review</button>
+          <button id="fit" class="pill" aria-pressed="false" title="Size the tab for this phone">Fit</button>
         </header>
-        <div class="zoom" role="group" aria-label="Text size">
-          <button id="smaller" aria-label="Smaller text">A&minus;</button>
-          <button id="bigger" aria-label="Bigger text">A+</button>
+        <div class="screen-wrap">
+          <div id="screen" class="screen"></div>
+          <div class="zoom" role="group" aria-label="Text size">
+            <button id="smaller" aria-label="Smaller text">A&minus;</button>
+            <button id="bigger" aria-label="Bigger text">A+</button>
+          </div>
         </div>
-        <div id="screen" class="screen"></div>
         <div id="ask-bar" class="ask-bar" hidden></div>
-        <form id="reply" class="reply">
+        <form id="reply" class="composer">
           <textarea id="reply-text" rows="1" placeholder="Message&hellip;" enterkeyhint="send" autocomplete="off" autocapitalize="sentences"></textarea>
-          <button id="reply-send" type="submit" aria-label="Send">&#8593;</button>
+          <button id="reply-send" type="submit" aria-label="Send">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 7-7 7 7M12 19V5" /></svg>
+          </button>
         </form>
         <nav id="keys" class="keys" aria-label="Extra keys">
           <button data-key="esc">Esc</button>
@@ -74,12 +101,16 @@
       </section>
 
       <section id="review" class="view" hidden>
-        <header class="bar">
-          <button id="review-back" class="icon" aria-label="Back to the tab">&#8249;</button>
-          <div class="title"><span id="review-title">Changes</span></div>
-          <button id="commit" class="chip" hidden title="Ask the agent to commit">Ask to commit</button>
+        <header class="tbar">
+          <button id="review-back" class="round" aria-label="Back to the tab">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
+          </button>
+          <div class="tbar-title">
+            <div class="t1"><span id="review-title">Changes</span></div>
+            <div id="review-sum" class="t2 review-sum"></div>
+          </div>
+          <button id="commit" class="pill primary" hidden title="Ask the agent to commit">Ask to commit</button>
         </header>
-        <div id="review-sum" class="review-sum"></div>
         <div id="diff" class="diff"></div>
       </section>
     </main>
